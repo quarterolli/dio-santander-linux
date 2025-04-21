@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 echo "Atualizando índice de pacotes e instalando servidor Apache..."
 apt-get update && apt-get install apache2 -y

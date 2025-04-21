@@ -1,12 +1,12 @@
-#! /bin/bash
+#!/bin/bash
 
-echo Adicionando grupos...
+echo "Adicionando grupos..."
 
 for group in GRP_ADM GRP_VEN GRP_SEC; do
   groupadd $group
 done
 
-echo Adicionando usuários aos grupos...
+echo "Adicionando usuários aos grupos..."
 
 useradd carlos -m -s /bin/bash -G GRP_ADM
 useradd maria -m -s /bin/bash -G GRP_ADM
@@ -23,18 +23,16 @@ for user in carlos maria joao debora sebastiana roberto josefina amanda rogerio;
   passwd -e $user
 done
 
-echo Criando diretórios de trabalho e atribuindo permissões...
+echo "Criando diretórios de trabalho e atribuindo permissões..."
 
 mkdir /publico /adm /ven /sec
 
 chmod 777 /publico
-chmod 770 /adm
-chmod 770 /ven
-chmod 770 /sec
+chmod 770 /adm /ven /sec
 
 chown root:root /publico
 chown root:GRP_ADM /adm
 chown root:GRP_VEN /ven
 chown root:GRP_SEC /sec
 
-echo Infraestrutura de usuários configurada com sucesso!
+echo "Infraestrutura de usuários configurada com sucesso!"
