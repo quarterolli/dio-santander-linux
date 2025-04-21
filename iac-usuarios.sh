@@ -8,17 +8,18 @@ done
 
 echo "Adicionando usuários aos grupos..."
 
-useradd carlos -m -s /bin/bash -G GRP_ADM
-useradd maria -m -s /bin/bash -G GRP_ADM
-useradd joao -m -s /bin/bash -G GRP_ADM
-useradd debora -m -s /bin/bash -G GRP_VEN
-useradd sebastiana -m -s /bin/bash -G GRP_VEN
-useradd roberto -m -s /bin/bash -G GRP_VEN
-useradd josefina -m -s /bin/bash -G GRP_SEC
-useradd amanda -m -s /bin/bash -G GRP_SEC
-useradd rogerio -m -s /bin/bash -G GRP_SEC
-
-for user in carlos maria joao debora sebastiana roberto josefina amanda rogerio; do
+for user in carlos maria joao; do
+  useradd $user -m -s /bin/bash -G GRP_ADM
+  echo $user:321 | chpasswd
+  passwd -e $user
+done
+for user in debora sebastiana roberto; do
+  useradd $user -m -s /bin/bash -G GRP_VEN
+  echo $user:321 | chpasswd
+  passwd -e $user
+done
+for user in josefina amanda rogerio; do
+  useradd $user -m -s /bin/bash -G GRP_SEC
   echo $user:321 | chpasswd
   passwd -e $user
 done
